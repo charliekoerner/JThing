@@ -1,0 +1,8 @@
+.checkstyle
+.classpath
+.project
+.settings
+target
+target-eclipse
+jlifx
+jlifx.jar
