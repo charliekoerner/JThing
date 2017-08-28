@@ -62,10 +62,12 @@ public class HTTPServer extends NanoHTTPD implements ProtocolBinding{
 				response = e;
 			}
     		 
-    		 if(response instanceof Number || response instanceof Boolean){
+    		 if(response instanceof Number || response instanceof Boolean || response instanceof String){
     			 ValueObject valObj = new ValueObject(response);
         		 String json = gson.toJson(valObj);    		 
-        		 return new Response(json);
+        		 Response res = new Response(json);
+        		 res.addHeader("content-type", "application/json");
+        		 return res;
     		 }
     		 else if(response instanceof InvalidResourceURLException){
     			 String json = gson.toJson(response);

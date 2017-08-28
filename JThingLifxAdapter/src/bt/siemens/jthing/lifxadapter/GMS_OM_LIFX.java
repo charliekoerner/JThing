@@ -9,7 +9,7 @@ public class GMS_OM_LIFX extends Thing {
 
 	public GMS_OM_LIFX(URI uri) {
 		super(uri);
-		brightness = new Property<Short>(uri, "brightness", "Brightness") {};
+		brightness = new Property<Short>(uri, "brightness", "Brightness") ;
 		brightness.setWritable(true);
 		brightness.setMin((short) 0);
 		brightness.setMax((short) 65535);

@@ -1,7 +1,6 @@
 package bt.siemens.jthing.lifxadapter;
 
 import java.net.URI;
-
 import bt.siemens.jthing.types.Property;
 import bt.siemens.jthing.types.Thing;
 
@@ -11,6 +10,8 @@ class LIFX_WIFI_LIGHT extends Thing
 	{
 		super(uri);
 
+		super.om_name = "LIFX_WIFI_LIGHT";
+		
 		color = new Property<String>(uri, "color", "Color");
 		color.setWritable(true);
 		addProperty(color);
@@ -18,9 +19,16 @@ class LIFX_WIFI_LIGHT extends Thing
 		saturation = new Property<Long>(uri, "saturation", "Saturation");
 		saturation.setWritable(true);
 		saturation.setMin((long) 0);
-		saturation.setMax((long) 100);
+		saturation.setMax((long) 32000);
 		saturation.setUnits("%");
 		addProperty(saturation);
+		
+		hue = new Property<Long>(uri, "hue", "Hue");
+		hue.setWritable(true);
+		hue.setMin((long) 0);
+		hue.setMax((long) 3200);
+		hue.setUnits("%");
+		addProperty(hue);
 
 		brightness = new Property<Long>(uri, "brightness", "Brightness");
 		brightness.setWritable(true);
@@ -56,6 +64,8 @@ class LIFX_WIFI_LIGHT extends Thing
 	Property<String> color;
 
 	Property<Long> saturation;
+	
+	Property<Long> hue;
 
 	Property<Long> brightness;
 
