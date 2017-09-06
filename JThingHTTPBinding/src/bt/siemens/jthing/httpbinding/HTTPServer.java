@@ -66,8 +66,8 @@ public class HTTPServer extends NanoHTTPD implements ProtocolBinding{
     			 ValueObject valObj = new ValueObject(response);
         		 String json = gson.toJson(valObj);    		 
         		 Response res = new Response(json);
-        		 
-        		 res.addHeader( "Content-Type", "application/json");
+        		 res.setMimeType("application/json");
+        		 //res.addHeader( "Content-Type", "application/json");
         		 return res;
     		 }
     		 else if(response instanceof InvalidResourceURLException){
@@ -79,14 +79,16 @@ public class HTTPServer extends NanoHTTPD implements ProtocolBinding{
     		 else if(response instanceof Exception){
     			 String json = gson.toJson(response);
     			 Response errorResponse = new Response(json);
-    			 errorResponse.addHeader("Content-Type", "application/json");
+    			 errorResponse.setMimeType("application/json");
+    			//errorResponse.addHeader("Content-Type", "application/json");
     			 errorResponse.setStatus(Response.Status.INTERNAL_ERROR);
     			 return errorResponse;
     		 }
     		 else{
         		 String json = gson.toJson(response);        		 
         		 Response res = new Response(json);
-        		 res.addHeader("Content-Type", "application/json");
+        		 res.setMimeType("application/json");
+        		 //res.addHeader("Content-Type", "application/json");
         		 return res;
     		 }		 
     	 }
@@ -98,7 +100,9 @@ public class HTTPServer extends NanoHTTPD implements ProtocolBinding{
 		        String json = new String(buffer);
 	    		ValueObject valObj = (ValueObject)gson.fromJson(json,ValueObject.class);
 	    		Object response = mClient.write(URI.create(session.getUri()), valObj.value);
-	    		return new Response(gson.toJson(response));
+	    		Response res = new Response(gson.toJson(response));
+	    		res.setMimeType("application/json");
+	    		return res;
 			} catch (UnsupportedOperationException e) {
 				String json = gson.toJson(e);
    			 	Response errorResponse = new Response(json);

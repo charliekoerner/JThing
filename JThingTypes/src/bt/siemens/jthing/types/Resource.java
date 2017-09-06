@@ -16,7 +16,7 @@ public class Resource {
 	
 	@SerializedName("name")
 	@Expose(serialize = true, deserialize=true)
-	protected String mName;
+	public String name;
 	
 	
 	private  Object mSubsystemContext;
@@ -60,6 +60,8 @@ public class Resource {
     
     public String getValueType() { return ""; }
 
-    public String getName() { return mName;}
+    public String getName() { return name;}
+    
+    public void setName(String str) { name = str;}
 
 }

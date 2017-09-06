@@ -17,6 +17,7 @@ public class Thing extends Resource {
 	@Expose	
 	public String id;
 	
+	
 	@SerializedName("type")
 	@Expose
 	public String type;
@@ -27,6 +28,9 @@ public class Thing extends Resource {
 	
 	@SerializedName("uri")
 	@Expose(serialize = true, deserialize=true)
+	public String strUri;
+	
+	
 	public URI uri;
 	
 	public Thing(URI uri) {

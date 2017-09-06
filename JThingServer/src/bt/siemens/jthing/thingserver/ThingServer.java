@@ -33,7 +33,7 @@ public class ThingServer implements ProtocolBindingClient, AdapterClient {
 		if(uri.equals(URI.create("/"))){
 			ArrayList<HypermediaLink> thingUris = new ArrayList<HypermediaLink>();
 			for(Thing t: mThings)
-				thingUris.add(new HypermediaLink(t.getUri().toString(), HypermediaLink.REL_TYPE_THING_DESCRIPTION));
+				thingUris.add(new HypermediaLink(t.strUri, HypermediaLink.REL_TYPE_THING_DESCRIPTION));
 			HypermediaLinks links = new HypermediaLinks();
 			links.links = thingUris;
 			return links;

@@ -28,14 +28,21 @@ public class Property<T> extends Resource {
 	
 	@SerializedName("href")
 	@Expose(serialize = true, deserialize=true)
-	public URI uri;
+	public String uri;
+	
+	
+  @SerializedName("valueType")
+  @Expose(serialize = true, deserialize=true)
+  public String valueType;	
 	
 	public String f1;
 	
 	public Property(URI baseUri, String relativePath, String name) {
 		super(URI.create(baseUri.getPath() + "/" + relativePath));
-		mName = name;
-		this.uri = super.getUri();
+		this.name = name;
+		this.uri = super.getUri().toString();
+		this.uri = this.uri.replaceFirst("/", "");
+		valueType = "xsd:string";
 	}
 
 	public T getValue(){return mValue;}
