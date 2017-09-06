@@ -37,7 +37,7 @@ public class ThingServer implements ProtocolBindingClient, AdapterClient {
 			HypermediaLinks links = new HypermediaLinks();
 			links.links = thingUris;
 			return links;
-		}else if(uri.equals(URI.create("/status"))) {
+		}else if(uri.equals(URI.create("/Status"))) {
 			return mAdapter.getStatus();		}
 			
 		Resource r = resolveUri(uri);
